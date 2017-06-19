@@ -1,0 +1,50 @@
+version: '2'
+catalog:
+  name: App Test
+  version: 0.0.2
+  description: An app for testing custom catalog
+  minimum_rancher_version: 1.0.0
+  maximum_rancher_version: 2.0.0
+  upgrade_from: ">=1.0.0, <=2.0.0"
+  questions:
+    - variable: host_port
+      label: App port
+      description: |
+        Port that will be exposed on service creation
+      required: true
+      default: 3000
+      type: int
+    - variable: firstname
+      label: What is you firstname?
+      description: Fill the firstname which will be shown in the app
+      type: string
+services:
+  server:
+    scale: 4
+    start_on_create: true
+    health_check:
+      port: 8000
+      interval: 2000
+      unhealthy_threshold: 3
+      strategy: recreate
+      request_line: GET / HTTP/1.0
+      healthy_threshold: 2
+      response_timeout: 2000
+  lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: server
+        source_port: ${host_port}
+        target_port: 3000
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 42
+      unhealthy_threshold: 3
+      interval: 2000
+      strategy: recreate

@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    image: amoussard/app-test
+    expose:
+      - 3000
+    environment:
+      FIRSTNAME: ${firstname}
+  lb:
+    image: rancher/load-balancer-service
+    ports:
+      - ${host_port}:3000/tcp
+    links:
+      - server:server
