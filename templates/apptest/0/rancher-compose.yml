@@ -5,7 +5,7 @@ catalog:
   description: An app for testing custom catalog
   minimum_rancher_version: 1.0.0
   maximum_rancher_version: 2.0.0
-  upgrade_from: >=1.0.0., <=2.0.0
+  upgrade_from: ">=1.0.0, <=2.0.0"
   questions:
     - variable: firstname
       label: What is you firstname?
