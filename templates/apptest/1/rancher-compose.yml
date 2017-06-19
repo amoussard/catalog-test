@@ -20,16 +20,8 @@ catalog:
       type: string
 services:
   server:
-    scale: 4
+    scale: 2
     start_on_create: true
-    health_check:
-      port: 8000
-      interval: 2000
-      unhealthy_threshold: 3
-      strategy: recreate
-      request_line: GET / HTTP/1.0
-      healthy_threshold: 2
-      response_timeout: 2000
   lb:
     scale: 1
     start_on_create: true
@@ -41,10 +33,3 @@ services:
         service: server
         source_port: ${host_port}
         target_port: 3000
-    health_check:
-      healthy_threshold: 2
-      response_timeout: 2000
-      port: 42
-      unhealthy_threshold: 3
-      interval: 2000
-      strategy: recreate
