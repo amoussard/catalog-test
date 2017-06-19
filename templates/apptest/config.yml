@@ -1,0 +1,8 @@
+name: App Test
+description: |
+  An app for testing custom catalog
+version: 0.0.1
+category: Testing
+maintainer: Axel Moussard
+license: No licence
+projectURL: http://www.google.ca

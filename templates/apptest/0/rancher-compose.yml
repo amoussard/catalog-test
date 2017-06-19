@@ -1,0 +1,13 @@
+version: '2'
+catalog:
+  name: App Test
+  version: 0.0.1
+  description: An app for testing custom catalog
+  minimum_rancher_version: 1.0.0
+  maximum_rancher_version: 2.0.0
+  upgrade_from: >=1.0.0., <=2.0.0
+  questions:
+    - variable: firstname
+      label: What is you firstname?
+      description: Fill the firstname which will be shown in the app
+      type: string

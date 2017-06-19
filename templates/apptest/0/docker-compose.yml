@@ -1,0 +1,6 @@
+web:
+  image: amoussard/app-test
+  expose:
+    - 3000
+  environment:
+    FIRSTNAME: ${firstname}
