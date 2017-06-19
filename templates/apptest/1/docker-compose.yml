@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  server:
     image: amoussard/app-test
     expose:
       - 3000
